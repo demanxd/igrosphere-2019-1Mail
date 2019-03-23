@@ -1,24 +1,21 @@
 import re
 
 
-def read_file(file_path):
-    with open(file_path, 'r')as f:
-        return f.read()
 
-
-def filter_lines(regexp, lines):
+def filter_lines(filename, regexp):
     result = []
-    for line in lines:
-        if re.match(regexp, line):
-            result.append(line)
-        else:
-            print(f"line {line} don't match")
-    return [line for line in lines if re.match(regexp, line)]
+    f = open(filename)
+    lines = f.readline()
+    while lines:
+        if re.match(regexp, lines):
+            print(f"line {lines} don't match")
+        lines = f.readline()
+    f.close()
+    return []
 
 
 if __name__ == "__main__":
     filename = "coverage-error.log"
     regexp = r"\[\d\d\d\d\.\d\d\.\d\d \d\d:\d\d:\d\d\].+"
-    lines = read_file(filename)
-    print("Author is d.galamaga")
-    print(filter_lines(regexp, lines))
+    print("Author is Dmitry.Shapovalov")
+    print(filter_lines(filename, regexp))
