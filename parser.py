@@ -8,7 +8,7 @@ def filter_lines(filename, regexp):
     lines = f.readline()
     while lines:
         if re.match(regexp, lines):
-            print(f"line {lines} don't match"),
+            print(f"line {lines}"),
             result.append(lines)
         lines = f.readline()
     f.close()
